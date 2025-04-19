@@ -11,8 +11,30 @@ e.grid(row=0, column=0, columnspan=3, padx=10, pady=10)
 
 def buttonClick(number):
     #e.delete(0, END)
-    e.insert(0, number)
+    current = e.get()
+
+    # ini fungsi untuk menghapus hasil inputan sebelumnya, karena sebelumnya ketika input 2 kali inputan sebelunya akan ikut
+    e.delete(0, END)
+
+    e.insert(0, str(current) + str(number))
     return
+
+# menghapus angka yg dimasukan
+def button_clear():
+    e.delete(0, END)
+
+# button add untuk angka pertama
+def button_add():
+    first_number = e.get()
+    global f_num
+    f_num = int(first_number)
+    e.delete(0, END)
+
+# button add untuk angka ke dua
+def button_equal():
+    second_number = e.get()
+    e.delete(0, END)
+    e.insert(0, f_num + int(second_number))
 
 
 # tombol
@@ -26,9 +48,9 @@ button_7 = Button(root, text="7", padx=40, pady=20, command=lambda: buttonClick(
 button_8 = Button(root, text="8", padx=40, pady=20, command=lambda: buttonClick(8))
 button_9 = Button(root, text="9", padx=40, pady=20, command=lambda: buttonClick(9))
 button_0 = Button(root, text="0", padx=40, pady=20, command=lambda: buttonClick(0))
-button_tambah = Button(root, text="+", padx=39, pady=20, command=lambda: buttonClick)
-button_samaDengan = Button(root, text="=", padx=91, pady=20, command=lambda: buttonClick)
-button_hapus = Button(root, text="hapus", padx=79, pady=20, command=lambda: buttonClick)
+button_tambah = Button(root, text="+", padx=39, pady=20, command= button_add)
+button_samaDengan = Button(root, text="=", padx=91, pady=20, command=button_equal)
+button_hapus = Button(root, text="hapus", padx=79, pady=20, command= button_clear)
 
 # put button on the screen
 button_1.grid(row=3, column=0)
