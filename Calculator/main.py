@@ -27,6 +27,8 @@ def button_clear():
 def button_add():
     first_number = e.get()
     global f_num
+    global math
+    math = "addition"
     f_num = int(first_number)
     e.delete(0, END)
 
@@ -34,7 +36,46 @@ def button_add():
 def button_equal():
     second_number = e.get()
     e.delete(0, END)
-    e.insert(0, f_num + int(second_number))
+
+    if math == "addition":
+        e.insert(0, f_num + int(second_number))
+
+    if math == "pengurangan":
+        e.insert(0, f_num - int(second_number))
+
+    if math == "perkalian":
+        e.insert(0, f_num * int(second_number))
+
+    if math == "pembagian":
+        e.insert(0, f_num / int(second_number))
+
+
+# button pengurangan
+def button_pengurangan():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "pengurangan"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+# button perkalian
+def button_perkalian():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "perkalian"
+    f_num = int(first_number)
+    e.delete(0, END)
+
+# button pembagian
+def button_pembagian():
+    first_number = e.get()
+    global f_num
+    global math
+    math = "pembagian"
+    f_num = int(first_number)
+    e.delete(0, END)
 
 
 # tombol
@@ -51,6 +92,10 @@ button_0 = Button(root, text="0", padx=40, pady=20, command=lambda: buttonClick(
 button_tambah = Button(root, text="+", padx=39, pady=20, command= button_add)
 button_samaDengan = Button(root, text="=", padx=91, pady=20, command=button_equal)
 button_hapus = Button(root, text="hapus", padx=79, pady=20, command= button_clear)
+
+button_pengurangan = Button(root, text="-", padx=41, pady=20, command= button_pengurangan)
+button_perkalian = Button(root, text="x", padx=40, pady=20, command= button_perkalian)
+button_pembagian = Button(root, text="/", padx=40, pady=20, command= button_pembagian)
 
 # put button on the screen
 button_1.grid(row=3, column=0)
@@ -69,6 +114,10 @@ button_0.grid(row=4, column=0)
 button_hapus.grid(row=4, column=1, columnspan=2)
 button_tambah.grid(row=5, column=0)
 button_samaDengan.grid(row=5, column=1, columnspan=2)
+
+button_pengurangan.grid(row=6, column=0)
+button_perkalian.grid(row=6, column=1)
+button_pembagian.grid(row=6, column=2)
 
 
 root.mainloop()
